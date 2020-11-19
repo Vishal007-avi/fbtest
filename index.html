@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="function.js"></script>
+<script>
+function fun(){
+var input=document.getElementById("it").value;
+//alert(input);
+let xhr = new XMLHttpRequest(); 
+            let url = "data.php"; 
+            let  result = document.querySelector('.result');
+            // open a connection 
+            xhr.open("POST", url, true); 
+  
+            // Set the request header i.e. which type of content you are sending 
+            xhr.setRequestHeader("Content-Type", "application/json"); 
+  
+            // Create a state change callback 
+            xhr.onreadystatechange = function () { 
+                if (xhr.readyState === 4 && xhr.status === 200) { 
+  
+                    // Print received data from server 
+                    result.innerHTML = this.responseText; 
+  
+                } 
+            }; 
+  
+            // Converting JSON data to string 
+            var data = JSON.stringify({"input": email.value }); 
+  
+            // Sending data with the request 
+            xhr.send(data);
+       	
+			
+}
+</script>
+</head>
+<body>
+<form id="form" action="data.php">
+<input type="text" id="it" class="itt" name="email"/>
+<button onclick="myFunction();fun()" class="button" value="1"  id="btn" type="submit">Submit</button>
+</form>
+<br><br>
+<p class="result"></p>
+
+</body>
+</html>
